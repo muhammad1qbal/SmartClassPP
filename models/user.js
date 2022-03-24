@@ -1,4 +1,6 @@
 'use strict';
+
+const nodemailer = require('nodemailer')
 const {
   Model
 } = require('sequelize');
@@ -14,6 +16,29 @@ module.exports = (sequelize, DataTypes) => {
       User.belongsTo(models.Course);
       User.hasOne(models.Profile);
     }
+
+    static mail(send) {
+        let sendEmail = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'iqbal.muh998@gmail.com',
+          pass: 'kqboucqllkvhtmiu'
+        }
+      })
+      let mailOptions = {
+        from: 'iqbal.muh998@gmail.com',
+        to: send,
+        subject: 'success update',
+        text: 'your profile has been updated'
+      }
+
+      sendEmail.sendMail(mailOptions, (err, info) => {
+        if (err) {
+          console.log(err);
+        }
+      })
+    }
+
   }
   User.init({
     name: DataTypes.STRING,
