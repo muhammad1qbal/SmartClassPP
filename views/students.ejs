@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="/logout"><button>Logout</button></a>
+  <h1>Student</h1>
+  <p>name: <%=database.name%></p>
+  <p>age: <%=profile.age%></p>
+  <p>gender: <%=profile.gender%></p>
+  <p>phone: <%=profile.phone%></p>
+  <a href="/students/<%=database.id%>/edit"><button>Edit Profile</button></a>
+  <h2>Wanted course</h2>
+  <p>name: <%=course.name%></p>
+  <p>description: <%=course.description%></p>
+  <p>price: <%=course.price%></p>
+  
+</body>
+</html>

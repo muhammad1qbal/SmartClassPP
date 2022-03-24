@@ -1,0 +1,29 @@
+[
+  {
+    "name": "joko",
+    "password": 123,
+    "email": "iqbalgen021@gmail.com",
+    "role" : "student",
+    "userCode": "s_joko_17",
+    "CourseId": 1
+
+  },
+  {
+    "name": "Bambang",
+    "password": 456,
+    "email": "bambang@gmail.com",
+    "role" : "teacher",
+    "userCode": "t_bambang_24",
+    "CourseId": 2
+
+  },
+  {
+    "name": "yanti",
+    "password": 789,
+    "email": "yanti@gmail.com",
+    "role" : "teacher",
+    "userCode": "s_joko_25",
+    "CourseId": 3
+
+  }
+]
