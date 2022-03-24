@@ -6,7 +6,7 @@ const {
 } = require('../models');
 
 const {
-  Op
+  Op, EagerLoadingError
 } = require('sequelize');
 
 const bcryptjs = require('bcryptjs')
@@ -23,6 +23,7 @@ class Controller {
     .then(data => {
       if (data) {
         let check = bcryptjs.compareSync(req.body.password, data.password)
+        req.session.userId = data.id
         if (check) {
           if (data.role == 'student') {
             res.redirect(`/students/${data.id}`)
@@ -54,14 +55,29 @@ class Controller {
   }
 
   static studentsPost(req, res) {
-    Profile.update(req.body,{where: {id: req.params.id}})
-    .then(() => {
-      res.redirect(`/students/${req.params.id}`)
+    User.findOne({where: {id:req.params.id}})
+    .then(data => {
+
+      return Profile.update(req.body,{where: {id: req.params.id}})
+      .then(() => {
+        User.mail(data.email)
+        res.redirect(`/students/${req.params.id}`)
+      })
     })
-    .catch(err => {
-      console.log(err);
+  }
+
+  static registerGet(req, res) {
+    res.render('register.ejs')
+  }
+
+  static registerPost(req, res) {
+    res.redirect('/')
+  }
+
+  static logout(req, res) {
+    req.session.destroy(err => {
+      res.redirect('/')
     })
-    
   }
 }
 
