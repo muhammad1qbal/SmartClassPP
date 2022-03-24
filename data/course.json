@@ -1,0 +1,51 @@
+[
+  {
+    "name": "The Complete JavaScript Course 2022: From Zero to Expert!",
+    "description": "The modern JavaScript course for everyone! Master JavaScript with projects, challenges and theory. Many courses in one!",
+    "duration": 30,
+    "price": 129000,
+    "CategoryId": 2
+  },
+  {
+    "name": "Adobe Photoshop CC – Essentials Training Course",
+    "description": "This Adobe Photoshop Essentials course will teach you Photoshop Retouching as well as Photoshop for graphic design.",
+    "duration": 60,
+    "price": 258000,
+    "CategoryId": 1
+  },
+  {
+    "name": "Build Responsive Real-World Websites with HTML and CSS",
+    "description": "Learn modern HTML5, CSS3 and web design by building a stunning website for your portfolio! Includes flexbox and CSS Grid",
+    "duration": 45,
+    "price": 200000,
+    "CategoryId": 2
+  },
+  {
+    "name": "An Entire MBA in 1 Course:Award Winning Business School Prof",
+    "description": "#1 Best Selling Business Course! ** Everything You Need to Know About Business from Start-up to IPO",
+    "duration": 40,
+    "price": 150000,
+    "CategoryId": 5
+  },
+  {
+    "name": "Social Media Marketing MASTERY | Learn Ads on 10+ Platforms",
+    "description": "MASTER online marketing on Twitter, Pinterest, Instagram, YouTube, Facebook, Google and more ad platforms! Coursenvy ®",
+    "duration": 55,
+    "price": 160000,
+    "CategoryId": 4
+  },
+  {
+    "name": "The Complete Foundation Stock Trading Course",
+    "description": "Learn To Trade The Stock Market. #1 Trading course. Inc: Technical Analysis, Candlesticks, Stocks, Day Trading +++",
+    "duration": 60,
+    "price": 179000,
+    "CategoryId": 3
+  },
+  {
+    "name": "Cryptocurrency Investment Course 2022: Fund your Retirement!",
+    "description": "Complete A-Z Guide to Bitcoin, Blockchain, Ethereum, Altcoins, Metaverse, NFT, DeFi & Meme coins for your retirement!",
+    "duration": 70,
+    "price": 129000,
+    "CategoryId": 3
+  }
+]
