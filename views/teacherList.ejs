@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>List Teachers</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: sans-serif;
+      }
+
+      /* Nav-Bar Banner */
+      .top-banner {
+        padding: 14px 50px;
+        background-color: black;
+        color: white;
+        font-size: 11px;
+      }
+
+      .nav-banner {
+        text-align: right;
+        float: right;
+      }
+
+      .nav-button {
+        padding: 20px;
+        font-size: 20px;
+      }
+
+      .nav-button:link,
+      .nav-button:visited {
+        color: white;
+        text-decoration: none;
+      }
+
+      .nav-button:hover,
+      .nav-button:active {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      h1 {
+        font-weight: normal;
+      }
+
+      .number-banner {
+        color: red;
+        text-decoration: none;
+      }
+
+      /* Isian */
+      .container {
+        width: 800px;
+        margin: auto;
+        margin-top: 40px;
+      }
+
+      .top-title-article {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .search-engine {
+        margin-bottom: 25px;
+      }
+
+      .search-bar {
+        border: 1px solid #cccccc;
+      }
+
+      .age-bar {
+        border: 1px solid #cccccc;
+      }
+
+      .search-button {
+        border: none;
+        background-color: #000;
+        color: #fff;
+        padding: 2px;
+      }
+
+      .yellow-back-color {
+        text-align: center;
+        background-color: #fcd69d;
+        color: #803131;
+        padding: 10px 15px;
+      }
+
+      /* Tables */
+      .tr-first {
+        border-top: 1px solid #000;
+      }
+
+      td {
+        border-bottom: 1px solid #cccbcb;
+      }
+
+      th,
+      td {
+        padding: 15px 15px 15px 2px;
+      }
+
+      .tables {
+        table-layout: fixed;
+        /* background-color: #7fb7ec; */
+        border-collapse: collapse;
+        margin: 10px 0 0 0px;
+        font-family: sans-serif;
+        width: 100%;
+      }
+
+      th {
+        text-align: left;
+        font-size: 15px;
+        font-weight: bold;
+      }
+
+      .button-see-detail {
+        display: inline-block;
+        vertical-align: middle;
+        background-color: #2aa51a;
+        color: #fff;
+        border: none;
+        padding: 5px;
+      }
+
+      .button-delete {
+        display: inline-block;
+        vertical-align: middle;
+        background-color: #f12d2d;
+        color: #fff;
+        border: none;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-banner">
+      <h1>
+        <div class="title-banner">
+          <a href="/"><span class="number-banner">Smart Class</span></a>
+
+          Report
+
+          <span class="nav-banner">
+            <a href="/teachers" class="nav-button">List Course</a>
+            <a href="/teachers/name" class="nav-button">List Teacher</a>
+          </span>
+        </div>
+      </h1>
+    </div>
+    <div class="container">
+      <article>
+        <h2 class="top-title-article">List Teacher</h2>
+
+        <form class="search-engine" action="/reports" method="get">
+          <input
+            type="text"
+            placeholder=""
+            class="search-bar"
+            name="searchByEvent"
+          />
+          <input
+            type="text"
+            placeholder=""
+            class="age-bar"
+            name="searchByAge"
+          />
+          <a href="#"
+            ><button class="search-button" type="submit">Search</button></a
+          >
+        </form>
+
+        <table class="tables">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% for(let i = 0; i < listTeacher.length; i++) { %>
+            <tr class="tr-first">
+              <td><%= listTeacher[i].name %></td>
+              <td><%= listTeacher[i].email %></td>
+              <td><%= listTeacher[i].Profile.age %></td>
+              <td><%= listTeacher[i].Profile.gender %></td>
+              <td><%= listTeacher[i].Profile.phone %></td>
+              <% } %>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+    </div>
+  </body>
+</html>
