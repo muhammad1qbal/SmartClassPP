@@ -103,12 +103,13 @@ class Controller {
       gender,
       phone
     }
-
     Profile.create(data).then(() => {
       res.redirect('/teachers')
     }).catch(err => {
       res.send(err)
-
+    })
+  }
+  
   static homeGet (req, res){
     res.render('home.ejs')
 

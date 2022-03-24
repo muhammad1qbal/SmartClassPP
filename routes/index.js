@@ -1,8 +1,8 @@
 const express = require('express');
 const Controller = require('../controllers/controller');
 const router = express.Router()
-const students = require('./student')
-
+const students = require('./students')
+const teachers = require('./teachers')
 
 
 router.get('/', Controller.homeGet)
@@ -18,7 +18,10 @@ router.use(function(req, res, next) {
   }
 })
 router.get('/logout', Controller.logout)
+
 router.use('/students', students)
+
+router.use('/teachers', teachers)
 
 
 
