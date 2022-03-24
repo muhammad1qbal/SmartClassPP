@@ -13,6 +13,9 @@ app.use(express.urlencoded({
 }))
 
 
+
+
+
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
@@ -21,6 +24,17 @@ app.use(session({
 }))
 
 app.use('/', route)
+
+
+
+app.get('/teachers', Controller.getListCourse)
+app.get('/teachers/name', Controller.getListTeacher)
+app.get('/teachers/add', Controller.addForm)
+app.post('/teachers/add', Controller.postAddForm)
+app.get('/teachers/add/profile', Controller.formProfile);
+app.post('/teachers/add/profile', Controller.addFormProfile)
+
+app.get('/teachers/:id', Controller.getStudentsById)
 
 
 app.listen(port, () => {
