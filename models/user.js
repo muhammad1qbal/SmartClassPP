@@ -49,6 +49,13 @@ module.exports = (sequelize, DataTypes) => {
     CourseId: DataTypes.INTEGER
   }, {
     sequelize,
+    hooks: {
+      beforeCreate(instance, options) {
+        
+        let code =instance.role.slice(0,1) +'_'+instance.name.split(' ').join('_')+'_'+instance.email.slice(0,3)
+        instance.userCode = code
+      }
+    },
     modelName: 'User',
   });
   return User;

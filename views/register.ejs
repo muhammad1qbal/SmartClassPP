@@ -1,12 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <a href="/logout"><button>Logout</button></a>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>List Form</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: sans-serif;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      /* Nav-Bar Banner */
+      .top-banner {
+        padding: 14px 50px;
+        background-color: black;
+        color: white;
+        font-size: 11px;
+      }
+
+      .nav-banner {
+        text-align: right;
+        float: right;
+      }
+
+      .nav-button {
+        padding: 20px;
+        font-size: 20px;
+      }
+
+      .nav-button:link,
+      .nav-button:visited {
+        color: white;
+        text-decoration: none;
+      }
+
+      .nav-button:hover,
+      .nav-button:active {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      h1 {
+        font-weight: normal;
+      }
+
+      .number-banner {
+        color: red;
+      }
+
+      .container {
+        width: 800px;
+        margin: auto;
+        margin-top: 40px;
+      }
+
+      .article-header {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .form-article {
+        margin-left: 165px;
+      }
+
+      input,
+      textarea {
+        margin-bottom: 20px;
+        border: 1px solid #dbdbdb;
+      }
+
+      input {
+        height: 22px;
+      }
+
+      .lastNameLabel {
+        margin-left: 98px;
+      }
+
+      .lastNameBox {
+        margin-left: 10px;
+        width: 23%;
+      }
+
+      .ageBox {
+        width: 10%;
+      }
+
+      input[type="number"]::-webkit-inner-spin-button {
+        opacity: 1;
+      }
+
+      .emailBox,
+      .nikBox,
+      .eventBox,
+      .descriptionBox {
+        width: 70%;
+      }
+
+      .descriptionBox {
+        height: 70px;
+        text-align: left;
+      }
+
+      .photoLabel {
+        display: inline-block;
+        margin-bottom: 5px;
+      }
+
+      /* .photoAction {
+        border: none;
+      } */
+
+      .dateBox {
+        padding: 5px 7px;
+      }
+
+      .submitButton {
+        border: none;
+        background-color: #000;
+        color: #fff;
+        padding: 6px;
+        cursor: pointer;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-banner">
+      <h1>
+        <div class="title-banner">
+          <span class="number-banner"></span>
+          Smart Class
+
+          <span class="nav-banner">
+          </span>
+        </div>
+      </h1>
+    </div>
+
+    <div class="container">
+      <article>
+        <header class="article-header">
+          <h2>Form Register</h2>
+        </header>
+
+        <div class="form-article">
+          <form action="/register" method="post">
+            <div class="name-form-article">
+              <label class="firstNameLabel">Name</label>
+              <input class="firstNameBox" type="text" name="name" />
+              <br />
+            </div>
+
+            <div class="age-form-article">
+              <label class="ageLabel">Password</label> <br />
+              <input class="ageBox" type="password" name="password" />
+            </div>
+
+            <div class="email-form-article">
+              <label class="emailLabel">Email</label> <br />
+              <input class="emailBox" type="text" name="email" />
+            </div>
+
+            <div>
+
+              <select name="role" id="cars">
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+              </select>
+              
+            </div><br>
+
+            <div>
+
+              <select name="CourseId" id="cars">
+                <%database.forEach(el => {%>
+                  <option value="<%=el.id%>"><%=el.name%></option>
+               <% })%>
+              </select>
+              
+            </div><br>
+
+            <input class="submitButton" type="submit" />
+          </form>
+        </div>
+      </article>
+    </div>
+  </body>
 </html>

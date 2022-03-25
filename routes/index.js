@@ -8,15 +8,12 @@ const teachers = require('./teachers')
 router.get('/', Controller.homeGet)
 router.post('/',Controller.homePost)
 router.get('/register', Controller.registerGet)
-router.get('/register', Controller.registerPost)
+router.post('/register', Controller.registerPost)
 
-router.use(function(req, res, next) {
-  if (!req.session.userId) {
-    res.redirect(`/?error=Please login`)
-  } else {
-    next()
-  }
-})
+router.get('/register/profile', Controller.registerProfileGet)
+router.post('/register/profile', Controller.registerProfilePost)
+
+
 router.get('/logout', Controller.logout)
 
 router.use('/students', students)

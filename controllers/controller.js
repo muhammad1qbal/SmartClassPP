@@ -31,10 +31,11 @@ class Controller {
     User.findAll({
       include: Profile,
       where: {
-        role: "Teacher"
+        role: "teacher"
       }
     }).then(listTeacher => {
-      // console.log(listTeacher);
+      console.log(listTeacher);
+      console.log('ccc');
       res.render('teacherList', {
         listTeacher
       })
@@ -54,12 +55,10 @@ class Controller {
         role: "Students"
       }
     }).then(listStudentbyId => {
-      // console.log(listStudentbyId);
       res.render('listStudent', {
         listStudentbyId
       });
     }).catch(err => {
-      // res.send(err)
       console.log(err);
     })
   }
@@ -81,8 +80,8 @@ class Controller {
     }
 
     User.create(data).then(() => {
+      console.log(data);
       res.redirect('/teachers/add/profile')
-      // console.log(data);
     }).catch(err => {
       res.send(err)
     })
@@ -125,7 +124,15 @@ class Controller {
           if (data.role == 'student') {
             res.redirect(`/students/${data.id}`)
           } else {
-            res.render('home.ejs')
+            Course.findAll({
+              include: Category
+            }).then(listCourse => {
+              res.render('courseList', {
+                listCourse
+              })
+            }).catch(err => {
+              res.send(err);
+            })
           }
         } else {
           res.render('home.ejs')
@@ -164,12 +171,79 @@ class Controller {
   }
 
   static registerGet(req, res) {
-    res.render('register.ejs')
+    Course.findAll().then(data => {
+      console.log('cccc');
+      let course = data.map(el => el.dataValues)
+      // console.log(course[0].id);
+      res.render('register', {database: course})
+    })
   }
 
   static registerPost(req, res) {
-    res.redirect('/')
+    console.log('vvv');
+    let pass = bcryptjs.hashSync(req.body.password.toString(), salt)
+    req.body.password = pass
+
+    let {
+      name, email, role, CourseId
+    } = req.body;
+    let data = {
+      name,
+      password: pass,
+      email,
+      role,
+      CourseId,
+    }
+  
+    User.create(data).then(() => {
+      console.log(data);
+      res.redirect('/register/profile')
+    }).catch(err => {
+      res.send(err)
+    })
   }
+
+  static registerProfileGet(req, res) {
+    User.findAll().then(data => {
+      let id = data.map(el => el.dataValues.id)
+      let lastId = id[id.length - 1]
+      res.render("registerProfile")
+    })
+  }
+
+  static registerProfilePost(req, res) {
+    console.log('ddda');
+    let {
+      age,
+      gender,
+      phone
+    } = req.body;
+
+
+    User.findAll().then(data2 => {
+      let lastId = data2[data2.length - 1].dataValues.id
+      console.log(lastId);
+      let data = {
+        age,
+        gender,
+        phone,
+        UserId: lastId
+
+      }
+      return Profile.create(data).then(() => {
+        res.redirect('/')
+      }).catch(err => {
+        res.send(err)
+      })
+    })
+
+  }
+
+  
+  
+
+
+  
 
   static logout(req, res) {
     req.session.destroy(err => {
