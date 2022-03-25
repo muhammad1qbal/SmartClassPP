@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Course.belongsTo(models.Category);
       Course.hasMany(models.User)
     }
+
   }
   Course.init({
     name: DataTypes.STRING,

@@ -41,10 +41,12 @@ module.exports = (sequelize, DataTypes) => {
 
   }
   User.init({
-    name: DataTypes.STRING,
-    password: DataTypes.STRING,
-    email: DataTypes.STRING,
-    role: DataTypes.STRING,
+    name: {type: DataTypes.STRING, validate:{notEmpty: {msg:'Nama lengkap harus diisi'}}},
+    password: {type: DataTypes.STRING, validate:{notEmpty: {msg:'Password lengkap harus diisi'}}},
+    email: {type: DataTypes.STRING, 
+      validate:{notEmpty: {msg:'email lengkap harus diisi'},
+      isEmail: {msg:'format email tidak valid'}}},
+    role: {type: DataTypes.STRING, validate:{notEmpty: {msg:'role lengkap harus diisi'}}},
     userCode: DataTypes.STRING,
     CourseId: DataTypes.INTEGER
   }, {

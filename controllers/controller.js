@@ -12,13 +12,20 @@ const {
 const bcryptjs = require('bcryptjs')
 let salt = bcryptjs.genSaltSync(10);
 
+const helper = require('../helpers/index');
+
 class Controller {
 
   static getListCourse(req, res) {
+    console.log('ddd');
     Course.findAll({
       include: Category
     }).then(listCourse => {
       // console.log(listCourse);
+
+      // let rupiah = listCourse.map(el => el.dataValues.price)
+      // console.log(rupiah); 
+      // listCourse.forEa
       res.render('courseList', {
         listCourse
       })
@@ -124,15 +131,7 @@ class Controller {
           if (data.role == 'student') {
             res.redirect(`/students/${data.id}`)
           } else {
-            Course.findAll({
-              include: Category
-            }).then(listCourse => {
-              res.render('courseList', {
-                listCourse
-              })
-            }).catch(err => {
-              res.send(err);
-            })
+            res.redirect(`/teachers`)
           }
         } else {
           res.render('home.ejs')
@@ -199,7 +198,8 @@ class Controller {
       console.log(data);
       res.redirect('/register/profile')
     }).catch(err => {
-      res.send(err)
+      let error = err.errors.map(el => el.message)
+      res.send(error)
     })
   }
 
